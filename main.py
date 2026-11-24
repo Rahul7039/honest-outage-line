@@ -17,13 +17,17 @@ LINE = (
 )
 
 
-def main() -> None:
-    assert 1 <= len(LINE) <= 160, f"line is {len(LINE)} characters"
-    assert LINE.strip() == LINE and "\n" not in LINE
+def publish(line: str) -> None:
     out_dir = "/output"
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
-        f.write(LINE)
+        f.write(line)
+
+
+def main() -> None:
+    assert 1 <= len(LINE) <= 160, f"line is {len(LINE)} characters"
+    assert LINE.strip() == LINE and "\n" not in LINE
+    publish(LINE)
 
 
 if __name__ == "__main__":
